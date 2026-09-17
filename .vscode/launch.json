@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/devCpp/C++/melaodosul",
-      "program": "c:/devCpp/C++/melaodosul/build/Debug/outDebug",
+      "cwd": "c:/devCpp/C++/CPPMS",
+      "program": "c:/devCpp/C++/CPPMS/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
