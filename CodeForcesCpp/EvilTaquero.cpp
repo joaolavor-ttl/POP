@@ -1,12 +1,10 @@
-#include <iostream>
-#include <string>
- 
+#include <bits/stdc++.h>
 using namespace std;
  
 int main() {
     // Otimização de I/O
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
  
     string s;
     if (cin >> s) {
