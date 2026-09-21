@@ -231,28 +231,86 @@ void alterarBebida(Bebida bebidas[], const int &totalBebidas) {
 
 // 1) Adiciona a moeda ao saldo (aceitar apenas 0.25, 0.50 e 1.00)
 void inserirMoedas(double &saldo, double valor) {
-
+    if(valor==0.25 or valor==0.50 or valor==1.00){
+        saldo+=valor;
+        cout<<"Saldo atualizado!"<<endl;
+    }
+    else{
+        cout<<"Moeda inválida!"<<endl;
+        return;
+    }
 }
 
 // 2) Verifica bebida, quantidade, estoque e saldo; se tudo estiver certo,
 //    desconta o saldo e o estoque
 void comprarBebida(Bebida bebidas[], const int &totalBebidas, double &saldo, int bebida, int quantidade) {
-
+    if(bebida<1 or bebida>totalBebidas){
+        cout<<"Bebida inválida!"<<endl;
+        return;
+    }
+    if(quantidade<1){
+        cout<<"Quantidade invalida."<<endl;
+        return;
+    }
+    if(bebidas[bebida-1].estoque<quantidade){
+        cout<<"Estoque insuficiente"<<endl;
+        return;
+    }
+    double totalCompra = bebidas[bebida-1].preco * quantidade;
+    if(saldo<totalCompra){
+        cout<<"Saldo insuficiente!"<<endl;
+        return;
+    }
+    saldo -= totalCompra;
+    bebidas[bebida-1].estoque -= quantidade;
+    cout<<"Compra realizada com sucesso!"<<endl;
 }
 
 // 3) Mostra o saldo disponível e zera o saldo
 void sacarSaldo(double &saldo) {
-
+    cout<<"Saldo disponível: R$" << saldo << endl;
+    saldo = 0;
 }
 
 // 4) Lê nome, preço e estoque de uma nova bebida e adiciona ao final do vetor
 void cadastrarBebida(Bebida bebidas[], int &totalBebidas) {
-
+    Bebida novaBebida;
+    cout << "Nome da nova bebida: ";
+    cin.ignore();
+    getline(cin, novaBebida.nome);
+    cout << "Preço da nova bebida: ";
+    cin >> novaBebida.preco;
+    if (!precoValido(novaBebida.preco)) {
+        cout << "Preço inválido. Use múltiplos de R$0.25." << endl;
+        return;
+    }
+    cout << "Estoque inicial da nova bebida: ";
+    cin >> novaBebida.estoque;
+    bebidas[totalBebidas] = novaBebida;
+    totalBebidas++;
+    cout << "Bebida cadastrada com sucesso!" << endl;
 }
 
 // 5) Adiciona unidades ao estoque de uma bebida existente
 void reporEstoque(Bebida bebidas[], const int &totalBebidas) {
+    mostrarEstoque(bebidas, totalBebidas);
+    int numero;
+    cout << "Número da bebida a repor: ";
+    cin >> numero;
 
+    if (numero < 1 || numero > totalBebidas) {
+        cout << "Bebida inválida." << endl;
+        return;
+    }
+    int quantidade;
+    cout << "Quantidade a repor: ";
+    cin >> quantidade;
+    if (quantidade < 1) {
+        cout << "Quantidade inválida." << endl;
+        return;
+    } 
+    bebidas[numero - 1].estoque += quantidade;
+    cout << "Estoque atualizado: " << bebidas[numero - 1].estoque << " unidades." << endl;
 }
 
 // ================== QUESTÕES DE COMPREENSÃO ==================
