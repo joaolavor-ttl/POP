@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
- 
+ //coding for tests
 int main() {
     // Otimização de I/O
     ios::sync_with_stdio(false);
