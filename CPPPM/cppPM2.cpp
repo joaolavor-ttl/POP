@@ -1,45 +1,49 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool eh_letra(char c){
-    return (c >= 'a' and c <= 'z') || (c >= 'A' and c <= 'Z');
+bool eh_letra(unsigned char c) {
+    if (c > 127) return true;
+    return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
 }
-bool fada(const string& s){
-    int N =s.length();
-    for(int i=0;i+3<N;i++){
-        if(tolower(s[i])   == 'f' and
-            tolower(s[i+1]) == 'a' and
-            tolower(s[i+2]) == 'd' and
-            tolower(s[i+3]) == 'a'){
-                bool ok_left=(i==0) or !eh_letra(s[i-1]);
-                bool ok_right=(i+4==N) or !eh_letra(s[i+4]);
+bool fada(const string& s) {
+    int N = s.length();
+    for (int i = 0; i + 3 < N; i++) {
+        if (tolower((unsigned char)s[i])   == 'f' &&
+            tolower((unsigned char)s[i+1]) == 'a' &&
+            tolower((unsigned char)s[i+2]) == 'd' &&
+            tolower((unsigned char)s[i+3]) == 'a') {
 
-                if(ok_left and ok_right){
-                    return true;
-                }
+            bool ok_left  = (i == 0)     || !eh_letra((unsigned char)s[i-1]);
+            bool ok_right = (i + 4 == N) || !eh_letra((unsigned char)s[i+4]);
+
+            if (ok_left && ok_right) {
+                return true;
             }
+        }
     }
     return false;
 }
-
-int main(){
+int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
     int N;
-    if(!(cin>>N)) return 0;
-    
-    string s;
-    getline(cin, s);
+    while (cin >> N) {
+        string s;
+        getline(cin, s);
 
-    int ans=0;
-    while(N-- and getline(cin,s)){
-        if(fada(s)){
-            ans++;
+        int ans = 0;
+        while (N--) {
+            if (!getline(cin, s)) break;
+            if (!s.empty() && s.back() == '\r') {
+                s.pop_back();
+            }
+            if (fada(s)) {
+                ans++;
+            }
         }
+        cout << ans << '\n';
     }
-    cout<<ans<<'\n';
-
     return 0;
 }
 
