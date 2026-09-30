@@ -2,6 +2,7 @@
 using namespace std;
 
 int main(){
-    cout<<"hello hacuna!"<<endl;
+    vector<int> N;
+    
     return 0;
 }
