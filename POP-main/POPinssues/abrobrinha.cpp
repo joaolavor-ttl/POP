@@ -2,6 +2,6 @@
 using namespace std;
 
 int main(){
-    //apenas pra nao perder o ritmo do vscode
+    cout<<"hello hacuna!"<<endl;
     return 0;
 }
