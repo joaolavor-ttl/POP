@@ -15,7 +15,7 @@ bool temFada(const string& s){
   }
   return false;
 }
-
+//
 int main(){
     
   ios::sync_with_stdio(false);
