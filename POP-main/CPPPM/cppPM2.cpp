@@ -2,20 +2,15 @@
 using namespace std;
 
 bool temFada(const string& s){
-  
   for(int i=0;i+3<(int)s.size();i++){
-      if(tolower(s[i])=='f' and
-        tolower(s[i+1])=='a' and
-        tolower(s[i+2])== 'd' and
-        tolower(s[i+3])== 'a'){
-            bool esquerda = (i==0) or !isalpha(s[i-1]);
-            bool direita = (i+4 ==(int)s.size()) or !isalpha(s[i+4]);
-            if(esquerda and direita) return true;
-        }
+    if(tolower((unsigned char)s[i])=='f' and
+       tolower((unsigned char)s[i+1])=='a' and
+       tolower((unsigned char)s[i+2])=='d' and
+       tolower((unsigned char)s[i+3])=='a')
+      return true;
   }
   return false;
 }
-//
 int main(){
     
   ios::sync_with_stdio(false);
