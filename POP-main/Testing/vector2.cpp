@@ -16,7 +16,19 @@ int indice_do_menor(const std::vector<int>& v) {
     // 2. comece o menor em v[0] e o indice em 0 (NAO comece o menor em 0).
     // 3. percorra de i = 1 ate o fim; se v[i] for MENOR que o menor,
     //    atualize os dois. Use < , nao <= , para o empate ficar com o primeiro.
-    return -1;
+    if(v.size() == 0){
+        return -1;
+    }
+    int menor = v[0];
+    int indice = 0;
+
+    for(int i=1;i<v.size();i++){
+        if(v[i]<menor){
+            menor = v[i];
+            indice = i;
+        }
+    }
+    return indice;
 }
 
 

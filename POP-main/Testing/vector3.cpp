@@ -15,7 +15,16 @@ int conta_trocas_de_sinal(const std::vector<int>& v) {
     // TODO: declare o contador ANTES do laco.
     // Percorra de i = 1 ate o fim comparando v[i - 1] com v[i]:
     // se os sinais forem diferentes, incremente o contador.
-    return 0;
+    if(v.size() == 0 or v.size() == 1){
+        return 0;
+    }
+    int cont=0;
+    for(int i=1;i<v.size();i++){
+        if(v[i-1]*v[i]<0){
+            cont++;
+        }
+    }
+    return cont;
 }
 
 int main() {
