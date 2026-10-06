@@ -11,7 +11,6 @@ int conta_trocas_de_sinal(const std::vector<int>& v);
 
 #endif
 
-==
 int conta_trocas_de_sinal(const std::vector<int>& v) {
     // TODO: declare o contador ANTES do laco.
     // Percorra de i = 1 ate o fim comparando v[i - 1] com v[i]:
