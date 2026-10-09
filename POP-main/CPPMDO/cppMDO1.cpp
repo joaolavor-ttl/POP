@@ -14,6 +14,5 @@ int main() {
     }
     cout<<cont<<endl;
     
-
     return 0;
 }
