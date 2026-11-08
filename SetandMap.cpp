@@ -72,3 +72,24 @@ bool maior_valida(vector<Leitura>& v, Leitura& saida){
 	 }
 	 return false;//retorna false indicando que não encontrou nenhum valor valido
 }
+
+//test 2;
+
+struct Aluno{
+	string nome;
+	string curso;
+	double nota;
+};
+map<string, double> media_curso(vector<Aluno>& v){
+	map<string, double> soma;//mapa para armazenar a soma das notas por curso
+	map<string, int> cont;//mapa para armazenar a quantidade de alunos por curso
+	for(int i=0;i<v.size();i++){//percorre o vetor de alunos
+		soma[v[i].curso]+=v[i].nota;//soma a nota do aluno ao total do curso
+		cont[v[i].curso]++;//incrementa a quantidade de alunos do curso
+	}
+	map<string, double> media;//mapa para armazenar a media de cada curso
+	for(const auto& par : soma){//percorre o mapa de soma das notas
+		media[par.first]=par.second/cont[par.first];//calcula a media do curso e armazena no mapa de media
+	}
+	return media;//retorna o mapa com as médias por curso
+}
